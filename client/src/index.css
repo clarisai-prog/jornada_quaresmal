@@ -1,14 +1,19 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 
 /* ─── Design Tokens ─────────────────────────────── */
 :root {
   --linen: #F5F1E8;
   --cream: #FDFAF4;
-  --dark: #2C2416;
+  --dark: #121013;
   --accent: #8B7355;
-  --muted: #6B6B6B;
+  --muted: #A89F95;
   --border: #E8E0D0;
   --purple: #5A2D82;
+  --gold-primary: #D4AF37;
+  --gold-light: #F4E4BC;
+  --bg-paper: #F9F7F2;
+  --bg-deep: #1a1721;
 }
 
 /* ─── Reset ─────────────────────────────────────── */
