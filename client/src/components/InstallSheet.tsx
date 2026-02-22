@@ -70,14 +70,23 @@ export function InstallSheet() {
                 </div>
 
                 {isIOS ? (
-                    <p style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.7, marginBottom: 20 }}>
-                        Toque em <strong>⎙ Compartilhar</strong> e depois em{" "}
-                        <strong>Adicionar à Tela de Início</strong> para instalar.
-                    </p>
+                    <div style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.6, marginBottom: 20 }}>
+                        <p style={{ marginBottom: 8 }}>Para instalar no iPhone ou iPad:</p>
+                        <ol style={{ paddingLeft: 20 }}>
+                            <li>Toque no ícone de <strong>Compartilhar</strong> (quadrado com seta superior).</li>
+                            <li>Role para baixo e toque em <strong>Adicionar à Tela de Início</strong>.</li>
+                        </ol>
+                    </div>
                 ) : (
-                    <p style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.7, marginBottom: 20 }}>
-                        Instale o app para acessar os 40 dias mesmo sem internet.
-                    </p>
+                    <div style={{ fontSize: 14, color: "var(--muted)", lineHeight: 1.6, marginBottom: 20 }}>
+                        <p style={{ marginBottom: 8 }}>Acesse os 40 dias de qualquer lugar:</p>
+                        <ul style={{ paddingLeft: 20, listStyleType: "none" }}>
+                            <li>✨ Toque no botão <strong>Instalar</strong> abaixo.</li>
+                            <li style={{ marginTop: 4, fontSize: 12, fontStyle: "italic" }}>
+                                * Caso não apareça, use o menu do navegador e selecione "Instalar aplicativo".
+                            </li>
+                        </ul>
+                    </div>
                 )}
 
                 <div style={{ display: "flex", gap: 12 }}>
