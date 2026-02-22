@@ -17,6 +17,13 @@
   --stitch-purple-deep: #2E1A47;
   --stitch-paper-bg: #F9F7F2;
   --stitch-night-bg: #1a1721;
+
+  /* Quaresma Tokens */
+  --quaresma-bg: #F9F8F3;
+  --quaresma-primary: #3D0B0D;
+  --quaresma-accent: #C5A059;
+  --quaresma-text: #2D2926;
+  --quaresma-card-bg: #FFFFFF;
 }
 
 /* ─── Reset ─────────────────────────────────────── */
