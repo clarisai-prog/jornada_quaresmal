@@ -6,6 +6,7 @@ import { TokenGate } from "./components/TokenGate";
 // ─── Code Splitting ───────────────────────────────────────────────────────────
 const Home = lazy(() => import("./pages/Home").then(m => ({ default: m.Home })));
 const DayView = lazy(() => import("./pages/DayView").then(m => ({ default: m.DayView })));
+const Intro = lazy(() => import("./pages/Intro").then(m => ({ default: m.Intro })));
 const InstallSheet = lazy(() =>
   import("./components/InstallSheet").then(m => ({ default: m.InstallSheet }))
 );
@@ -91,6 +92,7 @@ export default function App() {
         <Suspense fallback={<PageSkeleton />}>
           <Switch>
             <Route path="/" component={Home} />
+            <Route path="/introducao" component={Intro} />
             <Route path="/dia/:id" component={DayView} />
             <Route>
               <div style={{ textAlign: "center", padding: "48px 24px" }}>

@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { DAYS, getCurrentLentDay, getLentDate, type Pilar } from "@/data/days";
 
 import { getCheckins } from "@/lib/checkin";
-import { IntroBook } from "@/components/IntroBook";
+// IntroBook removido para ser usado em outra página
 
 
 /* ─── Pilar Config ───────────────────────────── */
@@ -118,9 +118,17 @@ export function Home() {
                     <div style={{ ...S.progressFill, width: `${progress}%` }} />
                 </div>
 
-                {/* ── Livro de Introdução ──────────── */}
-                <h2 style={S.sectionTitle}>Antes de Começar</h2>
-                <IntroBook />
+                {/* ── Botão do Livro de Introdução ── */}
+                <Link href="/introducao" style={{ textDecoration: "none" }}>
+                    <div style={S.introCard}>
+                        <div style={S.introIcon}>📖</div>
+                        <div style={{ flex: 1 }}>
+                            <h3 style={S.introTitle}>Antes de Começar: A Introdução</h3>
+                            <p style={S.introText}>Abra o livro digital para ler as instruções e a teologia da jornada.</p>
+                        </div>
+                        <div style={S.introArrow}>→</div>
+                    </div>
+                </Link>
 
                 {/* ── Phases ─────────────────────── */}
                 {PHASES.map((phase, pi) => {
@@ -294,6 +302,38 @@ const S = {
         height: "100%", borderRadius: 5,
         background: "linear-gradient(90deg, #C4943A, #8B7355)",
         transition: "width 0.5s ease",
+    } as React.CSSProperties,
+
+    /* Intro Card */
+    introCard: {
+        display: "flex",
+        alignItems: "center",
+        gap: 16,
+        padding: "18px 20px",
+        background: "linear-gradient(135deg, #5A2D82 0%, #3D1E58 100%)",
+        borderRadius: 16,
+        marginBottom: 32,
+        color: "#fff",
+        boxShadow: "0 6px 20px rgba(90, 45, 130, 0.25)",
+        border: "1px solid rgba(255,255,255,0.1)",
+        cursor: "pointer",
+    } as React.CSSProperties,
+    introIcon: { fontSize: 32 } as React.CSSProperties,
+    introTitle: {
+        fontFamily: "'Playfair Display', serif",
+        fontSize: 17,
+        fontWeight: 700,
+        margin: "0 0 4px",
+    } as React.CSSProperties,
+    introText: {
+        fontSize: 12,
+        opacity: 0.8,
+        lineHeight: 1.4,
+        margin: 0,
+    } as React.CSSProperties,
+    introArrow: {
+        fontSize: 20,
+        opacity: 0.6,
     } as React.CSSProperties,
 
     /* Phase header */
