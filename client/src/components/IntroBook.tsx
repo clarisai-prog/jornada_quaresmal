@@ -45,9 +45,9 @@ export const IntroBook: React.FC = () => {
     const currentSlide = slides[page];
 
     return (
-        <div className="fixed inset-0 bg-quaresma text-quaresma-text font-plain overflow-y-auto flex flex-col">
+        <div className="fixed inset-0 bg-quaresma-bg text-quaresma-text font-plain overflow-y-auto flex flex-col">
             {/* Header */}
-            <header className="p-6 flex justify-between items-center bg-quaresma sticky top-0 z-20">
+            <header className="p-6 flex justify-between items-center bg-quaresma-bg sticky top-0 z-20">
                 <button
                     onClick={() => page > 0 ? setPage(page - 1) : setLocation("/")}
                     className="material-symbols-outlined text-quaresma-primary"
@@ -152,7 +152,7 @@ export const IntroBook: React.FC = () => {
 
             {/* Footer Navigation (Sticky) */}
             {currentSlide.type !== "final" && (
-                <footer className="p-8 bg-quaresma/80 backdrop-blur-sm flex items-center justify-between sticky bottom-0">
+                <footer className="p-8 bg-quaresma-bg/80 backdrop-blur-sm flex items-center justify-between sticky bottom-0">
                     <button
                         onClick={() => page > 0 && setPage(page - 1)}
                         className={`flex items-center gap-2 text-[10px] uppercase tracking-widest transition-opacity ${page === 0 ? 'opacity-0 pointer-events-none' : 'opacity-40 hover:opacity-100'}`}

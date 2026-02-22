@@ -1,8 +1,29 @@
 @import "tailwindcss";
+
+@theme {
+  --color-quaresma-bg: #F9F8F3;
+  --color-quaresma-primary: #3D0B0D;
+  --color-quaresma-accent: #C5A059;
+  --color-quaresma-text: #2D2926;
+  --color-quaresma-card: #FFFFFF;
+
+  --font-cinzel: "Cinzel", serif;
+  --font-serif-stitch: "Playfair Display", serif;
+  --font-plain: "Lato", "Inter", sans-serif;
+}
+
+@utility card-quaresma {
+  background: var(--color-quaresma-card);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  padding: 24px;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=Inter:wght@300;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 
-/* ─── Design Tokens ─────────────────────────────── */
+/* ─── Design Tokens (Legacy Compat) ──────────────── */
 :root {
   --linen: #F5F1E8;
   --cream: #FDFAF4;
@@ -18,13 +39,6 @@
   --stitch-purple-deep: #2E1A47;
   --stitch-paper-bg: #F9F7F2;
   --stitch-night-bg: #1a1721;
-
-  /* Quaresma Tokens */
-  --quaresma-bg: #F9F8F3;
-  --quaresma-primary: #3D0B0D;
-  --quaresma-accent: #C5A059;
-  --quaresma-text: #2D2926;
-  --quaresma-card-bg: #FFFFFF;
 }
 
 /* ─── Reset ─────────────────────────────────────── */
@@ -55,110 +69,7 @@ a {
   text-decoration: none;
 }
 
-/* ─── TokenGate ──────────────────────────────────── */
-.gate-screen {
-  min-height: 100dvh;
-  background: var(--linen);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  text-align: center;
-  gap: 16px;
-}
-
-.gate-spinner {
-  width: 44px;
-  height: 44px;
-  border: 3px solid var(--border);
-  border-top-color: var(--accent);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-}
-
-.gate-blocked {
-  gap: 12px;
-}
-
-.gate-cross {
-  font-size: 48px;
-  color: var(--purple);
-  margin-bottom: 8px;
-}
-
-.gate-title {
-  font-size: 26px;
-  color: var(--dark);
-}
-
-.gate-msg {
-  font-size: 15px;
-  color: var(--muted);
-  max-width: 320px;
-  line-height: 1.7;
-}
-
-.gate-hint {
-  font-size: 13px;
-  color: var(--muted);
-  max-width: 300px;
-  line-height: 1.6;
-  font-style: italic;
-}
-
-.gate-btn {
-  display: inline-block;
-  margin-top: 12px;
-  padding: 12px 28px;
-  background: var(--purple);
-  color: #fff;
-  border-radius: 8px;
-  font-size: 15px;
-  font-family: 'Lora', serif;
-  transition: opacity 0.2s;
-}
-
-.gate-btn:hover {
-  opacity: 0.85;
-}
-
-/* ─── InstallSheet ───────────────────────────────── */
-.install-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(44, 36, 22, 0.4);
-  z-index: 100;
-  animation: fadeIn 0.3s;
-}
-
-.install-sheet {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: var(--cream);
-  border-radius: 20px 20px 0 0;
-  padding: 28px 24px calc(28px + env(safe-area-inset-bottom));
-  z-index: 101;
-  animation: slideUp 0.35s cubic-bezier(0.33, 1, 0.68, 1);
-}
-
-.install-handle {
-  width: 36px;
-  height: 4px;
-  background: var(--border);
-  border-radius: 2px;
-  margin: 0 auto 20px;
-}
-
 /* ─── Animations ─────────────────────────────────── */
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -179,38 +90,26 @@ a {
   }
 }
 
-/* ─── STITCH DESIGNS (PREMIUM & CLEAN) ─── */
-:root {
-  --stitch-gold: #D4AF37;
-  --stitch-gold-light: #F4E4BC;
-  --stitch-purple-deep: #2E1A47;
-  --stitch-night-bg: #1a1721;
-  --stitch-paper-bg: #F9F7F2;
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 
-  /* Text and Accents */
-  --stitch-text-primary: #EAE0D5;
-  --stitch-text-secondary: #A89F95;
-  --stitch-accent-purple: #9D84B7;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Global Font Helpers */
-.font-cinzel {
-  font-family: 'Cinzel', serif !important;
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.font-serif-stitch {
-  font-family: 'Playfair Display', serif !important;
-}
-
-.font-plain {
-  font-family: 'Lato', 'Inter', sans-serif !important;
-}
-
-/* Premium Effects */
+/* Glass & Texture Helpers */
 .glass-panel-stitch {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -226,33 +125,4 @@ a {
   pointer-events: none;
   z-index: 0;
   mix-blend-mode: overlay;
-}
-
-.gold-glow-stitch {
-  box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
-}
-
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

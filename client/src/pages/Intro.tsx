@@ -3,7 +3,7 @@ import { IntroBook } from "@/components/IntroBook";
 
 export function Intro() {
     return (
-        <div className="fixed inset-0 bg-black overflow-hidden">
+        <div className="fixed inset-0 bg-quaresma-bg overflow-hidden">
             <IntroBook />
         </div>
     );
