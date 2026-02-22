@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { DAYS, getCurrentLentDay, getLentDate, type Pilar } from "@/data/days";
 
 import { getCheckins } from "@/lib/checkin";
+import { IntroBook } from "@/components/IntroBook";
 
 
 /* ─── Pilar Config ───────────────────────────── */
@@ -116,6 +117,10 @@ export function Home() {
                 <div style={S.progressBar}>
                     <div style={{ ...S.progressFill, width: `${progress}%` }} />
                 </div>
+
+                {/* ── Livro de Introdução ──────────── */}
+                <h2 style={S.sectionTitle}>Antes de Começar</h2>
+                <IntroBook />
 
                 {/* ── Phases ─────────────────────── */}
                 {PHASES.map((phase, pi) => {
