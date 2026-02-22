@@ -104,12 +104,12 @@ export const IntroBook: React.FC = () => {
                 <div className="book-spine" />
 
                 {/* ── Active Page ── */}
-                <div className="book-page active">
+                <div className="book-page active" onClick={next}>
                     <div className="book-page-inner">
                         {PAGES[currentPage].content}
 
                         {/* ── Navigation ── */}
-                        <div className="book-nav">
+                        <div className="book-nav" onClick={(e) => e.stopPropagation()}>
                             {currentPage > 0 && (
                                 <button className="book-nav-btn prev" onClick={prev}>←</button>
                             )}
