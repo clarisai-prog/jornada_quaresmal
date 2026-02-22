@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=Inter:wght@300;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 
 /* ─── Design Tokens ─────────────────────────────── */
@@ -10,10 +10,13 @@
   --muted: #A89F95;
   --border: #E8E0D0;
   --purple: #5A2D82;
-  --gold-primary: #D4AF37;
-  --gold-light: #F4E4BC;
-  --bg-paper: #F9F7F2;
-  --bg-deep: #1a1721;
+
+  /* Stitch Tokens */
+  --stitch-gold: #D4AF37;
+  --stitch-gold-light: #F4E4BC;
+  --stitch-purple-deep: #2E1A47;
+  --stitch-paper-bg: #F9F7F2;
+  --stitch-night-bg: #1a1721;
 }
 
 /* ─── Reset ─────────────────────────────────────── */
@@ -168,200 +171,122 @@ a {
   }
 }
 
-/* ─── IntroBook ──────────────────────────────────── */
-.book-container {
-  perspective: 1500px;
-  margin: 5px 0 20px;
+/* ─── STITCH DESIGNS (EXACT COPY) ─── */
+
+.stitch-container {
   width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.book-wrapper {
+  height: 100dvh;
   position: relative;
-  width: 98%;
-  max-width: 460px;
-  height: clamp(580px, 85dvh, 750px);
-  background: #e0d5c1;
-  border-radius: 4px 20px 20px 4px;
-  box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.2), inset 2px 0 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  transform-style: preserve-3d;
-}
-
-.book-spine {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 30px;
-  background: linear-gradient(90deg, #5A2D82 0%, #3D1E58 100%);
-  border-radius: 4px 0 0 4px;
-  z-index: 5;
-}
-
-.book-page {
-  position: absolute;
-  inset: 0 0 0 30px;
-  background: #FDFAF4;
-  border-radius: 0 16px 16px 0;
-  padding: 24px 24px;
-  box-shadow: inset 10px 0 20px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
-  border: 1px solid #E8E0D0;
-  background-image: linear-gradient(90deg, rgba(232, 224, 208, 0.15) 0%, transparent 8%, transparent 92%, rgba(232, 224, 208, 0.15) 100%);
 }
 
-.book-page-inner {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  position: relative;
+/* Global Stitch Classes */
+.font-cinzel {
+  font-family: 'Cinzel', serif;
 }
 
-/* Page content aesthetics */
-.book-cover {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: #5A2D82;
-  color: #fff;
-  margin: -24px;
-  padding: 24px;
-  border-radius: 0 12px 12px 0;
+.font-plain {
+  font-family: 'Lato', 'Inter', sans-serif;
 }
 
-.cover-sub {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  opacity: 0.7;
-  margin-bottom: 12px;
-}
-
-.cover-title {
-  font-size: 28px;
+.font-serif-stitch {
   font-family: 'Playfair Display', serif;
-  margin-bottom: 8px;
 }
 
-.cover-subtitle {
-  font-size: 16px;
+/* Capa */
+.capa-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCZOamM2gQylB9TgD3AcnYS59h3zW_O_TI4_NkE9Axm6nM50SGLTHCGjstqxCRKtNAopd9bHkPQwV6XoXBY6Ankj16vx9IaAk344mBbWsc-w3JonIAGAEbE1ZVH5wquKUquVp8KeX8AfJLXUaROe4NOSDqbv-cSiOSkH5efOiGAW4QU54_FRZkBhXQEh7M0ig7DMAZS_tGj7uMLBlLR794NdUr4aNgD-G2k9AT0HP0wBjyBrqkQvPM4n3QM_DPANIbTdV4mDFP0Vu6u');
+  background-size: cover;
+  background-position: center;
+}
+
+.glass-button-stitch {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  transition: all 0.3s ease;
+}
+
+/* Texture Overlay */
+.texture-overlay-stitch {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1621360841013-c768371e93cf?q=80&w=1000&auto=format&fit=crop');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.08;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* Watermark 40 */
+.watermark-40-stitch {
+  font-size: 12rem;
+  line-height: 1;
+  opacity: 0.08;
+  color: #4A2C40;
   font-family: 'Playfair Display', serif;
-  font-style: italic;
-  opacity: 0.8;
-  margin-bottom: 30px;
+  position: absolute;
+  top: -2rem;
+  right: -1rem;
+  z-index: 0;
+  pointer-events: none;
+  letter-spacing: -0.05em;
 }
 
-.cover-cross {
-  font-size: 64px;
-  margin-bottom: 40px;
+/* Pillar Card */
+.pillar-card-stitch {
+  background-color: white;
+  box-shadow: 0 4px 20px rgba(59, 9, 68, 0.05);
 }
 
-.cover-instruction {
-  font-size: 12px;
-  opacity: 0.6;
-  animation: pulse 2s infinite;
-}
-
-.book-page-content {
-  flex: 1;
-  font-size: 13px;
-  line-height: 1.5;
-  color: #3D3020;
-}
-
-.page-header {
-  font-size: 15px;
-  margin-bottom: 12px;
-  color: #5A2D82;
-  line-height: 1.3;
-  font-weight: 700;
-}
-
-.page-quote {
-  font-style: italic;
-  color: #8B7355;
-  padding: 10px 12px;
-  background: #F5F1E8;
-  border-radius: 6px;
-  margin: 12px 0;
-  border-left: 3px solid #C4943A;
-  font-size: 12.5px;
-}
-
-.page-list {
-  list-style: none;
-  padding: 0;
-  margin: 16px 0;
-}
-
-.page-list li {
-  margin-bottom: 8px;
-}
-
-.pilar-box {
-  margin-bottom: 8px;
-  padding: 6px 10px;
-  border: 1px solid #E8E0D0;
-  border-radius: 8px;
-  font-size: 12px;
-}
-
-.phases-summary {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin: 15px 0;
-  font-size: 12px;
-}
-
-.phases-summary div {
-  padding: 6px;
-  background: #F5F1E8;
-  border-radius: 4px;
-}
-
-.page-final {
-  text-align: center;
-  margin-top: 20px;
-  color: #5A2D82;
-  font-weight: 600;
-}
-
-/* Navigation */
-.book-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: auto;
-  padding-top: 12px;
-  border-top: 1px solid #E8E0D0;
-  position: relative;
-  z-index: 20;
-}
-
-.book-nav-btn {
-  background: var(--purple);
-  color: white;
-  border: none;
-  width: 32px;
-  height: 32px;
+/* Glow */
+.glow-stitch {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(88, 28, 135, 0.2);
   border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  filter: blur(80px);
+  pointer-events: none;
 }
 
+.glow-btn-stitch {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15), inset 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+/* Cleanup old book styles */
+.book-container,
+.book-wrapper,
+.book-spine,
+.book-page,
+.book-page-inner,
+.book-cover,
+.cover-sub,
+.cover-title,
+.cover-subtitle,
+.cover-cross,
+.cover-instruction,
+.book-page-content,
+.page-header,
+.page-quote,
+.page-list,
+.page-list li,
+.pilar-box,
+.phases-summary,
+.phases-summary div,
+.page-final,
+.book-nav,
+.book-nav-btn,
 .book-page-indicator {
-  font-size: 11px;
-  color: #8B7355;
-  font-weight: 600;
+  display: none !important;
 }
 
 @keyframes pulse {

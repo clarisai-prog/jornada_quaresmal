@@ -35,30 +35,35 @@ export function Intro() {
 const S = {
     page: {
         minHeight: "100dvh",
-        background: "#F5F1E8",
-        paddingBottom: 40,
+        background: "#000", // Match stitch theme better
     } as React.CSSProperties,
 
     header: {
-        padding: "24px 20px",
-        paddingTop: "calc(24px + env(safe-area-inset-top))",
-        background: "#FDFAF4",
-        borderBottom: "1px solid #E8E0D0",
+        padding: "16px 20px",
+        paddingTop: "calc(16px + env(safe-area-inset-top))",
+        background: "rgba(0,0,0,0.8)",
+        backdropFilter: "blur(10px)",
+        borderBottom: "1px solid rgba(255,255,255,0.1)",
         display: "flex",
         flexDirection: "column" as const,
-        gap: 16,
+        gap: 8,
+        position: "absolute" as const,
+        top: 0, left: 0, right: 0,
+        zIndex: 50,
     } as React.CSSProperties,
 
     backBtn: {
-        color: "#8B7355",
-        fontSize: 14,
+        color: "#fff",
+        fontSize: 12,
         fontWeight: 600,
         textDecoration: "none",
-        fontFamily: "'Lora', serif",
+        fontFamily: "'Cinzel', serif",
+        opacity: 0.6,
     } as React.CSSProperties,
 
     headerContent: {
         textAlign: "center" as const,
+        display: "none", // Design files have their own titles
     } as React.CSSProperties,
 
     subTitle: {
@@ -77,40 +82,14 @@ const S = {
     } as React.CSSProperties,
 
     main: {
-        padding: "12px 16px",
-        maxWidth: 600,
-        margin: "0 auto",
+        padding: 0,
+        width: "100%",
+        maxWidth: "none",
+        margin: 0,
         display: "flex",
         flexDirection: "column" as const,
-        alignItems: "center",
     } as React.CSSProperties,
 
-    guide: {
-        marginTop: 20,
-        padding: "16px",
-        background: "rgba(139, 115, 85, 0.05)",
-        borderRadius: 12,
-        fontSize: 14,
-        color: "#6B6B6B",
-        lineHeight: 1.6,
-        fontStyle: "italic",
-        textAlign: "center" as const,
-        border: "1px dashed #E8E0D0",
-        marginBottom: 24,
-    } as React.CSSProperties,
-
-    startBtn: {
-        display: "block",
-        width: "100%",
-        padding: "16px",
-        background: "#5A2D82",
-        color: "#fff",
-        borderRadius: 12,
-        textAlign: "center" as const,
-        textDecoration: "none",
-        fontFamily: "'Lora', serif",
-        fontWeight: 700,
-        fontSize: 16,
-        boxShadow: "0 4px 15px rgba(90, 45, 130, 0.25)",
-    } as React.CSSProperties,
+    guide: { display: "none" }, // Redundant with stitch content
+    startBtn: { display: "none" }, // Included in last stitch slide
 };
