@@ -4,7 +4,7 @@ import path from "path";
 import { defineConfig } from "vite";
 
 // Nome exato do repositório no GitHub — define a base URL do GitHub Pages
-const REPO = "jornada-quaresmal-pwa-v5";
+const REPO = "jornada_quaresmal";
 
 export default defineConfig({
   // ✅ base obrigatório para GitHub Pages
