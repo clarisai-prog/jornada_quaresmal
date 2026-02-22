@@ -5,8 +5,8 @@
   "start_url": "/jornada_quaresmal/",
   "scope": "/jornada_quaresmal/",
   "display": "standalone",
-  "background_color": "#2C2416",
-  "theme_color": "#2C2416",
+  "background_color": "#F9F8F3",
+  "theme_color": "#F9F8F3",
   "orientation": "portrait-primary",
   "lang": "pt-BR",
   "categories": [
