@@ -8,12 +8,12 @@
  */
 
 const CACHE_VERSION = "quaresma-v5";
-const STATIC_CACHE  = `${CACHE_VERSION}-static`;
+const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const DYNAMIC_CACHE = `${CACHE_VERSION}-dynamic`;
-const FONT_CACHE    = `${CACHE_VERSION}-fonts`;
+const FONT_CACHE = `${CACHE_VERSION}-fonts`;
 
 // ✅ FIX: Base path do GitHub Pages
-const BASE = "/jornada-quaresmal-pwa-v5";
+const BASE = "/jornada_quaresmal";
 
 // ─── Assets do shell do app (pré-cache obrigatório) ──────────────────────────
 const SHELL_ASSETS = [
@@ -44,7 +44,7 @@ self.addEventListener("install", (event) => {
 
       // Rotas dos dias — falha silenciosa (SPA fallback responde)
       const dayPromises = DAY_ROUTES.map((route) =>
-        cache.add(route).catch(() => {})
+        cache.add(route).catch(() => { })
       );
       await Promise.allSettled(dayPromises);
 
@@ -96,11 +96,11 @@ self.addEventListener("fetch", (event) => {
 
   // ── Assets estáticos (JS, CSS, imagens, ícones) ──────────
   if (
-    request.destination === "script"  ||
-    request.destination === "style"   ||
-    request.destination === "image"   ||
-    request.destination === "font"    ||
-    url.pathname.startsWith(`${BASE}/icons/`)  ||
+    request.destination === "script" ||
+    request.destination === "style" ||
+    request.destination === "image" ||
+    request.destination === "font" ||
+    url.pathname.startsWith(`${BASE}/icons/`) ||
     url.pathname.startsWith(`${BASE}/assets/`) ||
     url.pathname === `${BASE}/manifest.json`
   ) {
@@ -291,7 +291,7 @@ self.addEventListener("message", (event) => {
     const dayId = event.data.dayId;
     if (dayId >= 1 && dayId <= 40) {
       caches.open(STATIC_CACHE).then((cache) => {
-        cache.add(`${BASE}/dia/${dayId}`).catch(() => {});
+        cache.add(`${BASE}/dia/${dayId}`).catch(() => { });
       });
     }
   }
