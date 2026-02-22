@@ -141,7 +141,7 @@ export const IntroBook: React.FC = () => {
 
                             <button
                                 onClick={() => setLocation("/")}
-                                className="w-full bg-quaresma-primary text-white py-4 rounded-lg font-cinzel text-xs tracking-[0.2em] transition-all hover:brightness-125 active:scale-[0.98] shadow-lg shadow-burgundy-900/20"
+                                className="w-full bg-quaresma-primary text-white py-4 rounded-lg font-cinzel text-xs tracking-[0.2em] transition-all hover:brightness-125 active:scale-[0.98] shadow-lg shadow-quaresma-primary/20"
                             >
                                 INICIAR JORNADA
                             </button>
