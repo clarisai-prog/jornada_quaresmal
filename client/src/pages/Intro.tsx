@@ -77,7 +77,7 @@ const S = {
     } as React.CSSProperties,
 
     main: {
-        padding: "24px 16px",
+        padding: "12px 16px",
         maxWidth: 600,
         margin: "0 auto",
         display: "flex",
@@ -86,8 +86,8 @@ const S = {
     } as React.CSSProperties,
 
     guide: {
-        marginTop: 32,
-        padding: "20px",
+        marginTop: 20,
+        padding: "16px",
         background: "rgba(139, 115, 85, 0.05)",
         borderRadius: 12,
         fontSize: 14,
@@ -96,7 +96,7 @@ const S = {
         fontStyle: "italic",
         textAlign: "center" as const,
         border: "1px dashed #E8E0D0",
-        marginBottom: 32,
+        marginBottom: 24,
     } as React.CSSProperties,
 
     startBtn: {
