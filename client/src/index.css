@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ─────────────────────────────── */
+:root {
+  --linen:    #F5F1E8;
+  --cream:    #FDFAF4;
+  --dark:     #2C2416;
+  --accent:   #8B7355;
+  --muted:    #6B6B6B;
+  --border:   #E8E0D0;
+  --purple:   #5A2D82;
+}
+
+/* ─── Reset ─────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Lora', Georgia, serif;
+  background: var(--linen);
+  color: var(--dark);
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+
+a { color: inherit; text-decoration: none; }
+
+/* ─── TokenGate ──────────────────────────────────── */
+.gate-screen {
+  min-height: 100dvh;
+  background: var(--linen);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  gap: 16px;
+}
+
+.gate-spinner {
+  width: 44px; height: 44px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.gate-blocked { gap: 12px; }
+
+.gate-cross {
+  font-size: 48px;
+  color: var(--purple);
+  margin-bottom: 8px;
+}
+
+.gate-title {
+  font-size: 26px;
+  color: var(--dark);
+}
+
+.gate-msg {
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 320px;
+  line-height: 1.7;
+}
+
+.gate-hint {
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 300px;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.gate-btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 12px 28px;
+  background: var(--purple);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: 'Lora', serif;
+  transition: opacity 0.2s;
+}
+.gate-btn:hover { opacity: 0.85; }
+
+/* ─── InstallSheet ───────────────────────────────── */
+.install-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(44, 36, 22, 0.4);
+  z-index: 100;
+  animation: fadeIn 0.3s;
+}
+
+.install-sheet {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--cream);
+  border-radius: 20px 20px 0 0;
+  padding: 28px 24px calc(28px + env(safe-area-inset-bottom));
+  z-index: 101;
+  animation: slideUp 0.35s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.install-handle {
+  width: 36px; height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin: 0 auto 20px;
+}
+
+/* ─── Animations ─────────────────────────────────── */
+@keyframes spin    { to { transform: rotate(360deg); } }
+@keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }

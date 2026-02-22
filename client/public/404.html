@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Jornada Quaresmal</title>
+    <script>
+      /**
+       * GitHub Pages retorna este 404.html para qualquer rota que não seja um arquivo.
+       * Ex: /jornada-quaresmal-pwa-v5/dia/3 → GitHub retorna 404 → este script
+       * salva a rota na sessionStorage e redireciona para index.html.
+       * O index.html recupera e restaura a rota com history.replaceState.
+       *
+       * ✅ Preserva ?t=TOKEN (necessário para o sistema de acesso Kiwify)
+       */
+      (function () {
+        var base = "/jornada-quaresmal-pwa-v5";
+        var loc = window.location;
+
+        // Extrai o caminho relativo (sem a base)
+        var path = loc.pathname.replace(base, "") || "/";
+
+        sessionStorage.setItem(
+          "__spa_redirect__",
+          JSON.stringify({
+            path: path,
+            search: loc.search,  // inclui ?t=TOKEN
+            hash: loc.hash,
+          })
+        );
+
+        // Redireciona para a raiz do site
+        loc.replace(base + "/");
+      })();
+    </script>
+  </head>
+  <body>
+    <p style="font-family: Georgia, serif; text-align: center; margin-top: 48px; color: #8B7355;">
+      Redirecionando…
+    </p>
+  </body>
+</html>

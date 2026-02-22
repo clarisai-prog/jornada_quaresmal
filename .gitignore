@@ -1,0 +1,21 @@
+# Dependências
+node_modules/
+
+# Build — gerado automaticamente pelo GitHub Actions
+dist/
+
+# Ambiente
+.env
+.env.local
+.env.production
+
+# Editor
+.DS_Store
+*.log
+.vscode/
+
+# Tokens e Dados Sensíveis
+tokens-kiwify.csv
+
+# TS Build Info
+*.tsbuildinfo
