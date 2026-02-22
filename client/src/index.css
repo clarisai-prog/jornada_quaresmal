@@ -171,146 +171,80 @@ a {
   }
 }
 
-/* ─── STITCH DESIGNS (EXACT COPY) ─── */
+/* ─── STITCH DESIGNS (PREMIUM & CLEAN) ─── */
+:root {
+  --stitch-gold: #D4AF37;
+  --stitch-gold-light: #F4E4BC;
+  --stitch-purple-deep: #2E1A47;
+  --stitch-night-bg: #1a1721;
+  --stitch-paper-bg: #F9F7F2;
 
-.stitch-container {
-  width: 100%;
-  height: 100dvh;
-  position: relative;
-  overflow: hidden;
+  /* Text and Accents */
+  --stitch-text-primary: #EAE0D5;
+  --stitch-text-secondary: #A89F95;
+  --stitch-accent-purple: #9D84B7;
 }
 
-/* Global Stitch Classes */
+/* Global Font Helpers */
 .font-cinzel {
-  font-family: 'Cinzel', serif;
-}
-
-.font-plain {
-  font-family: 'Lato', 'Inter', sans-serif;
+  font-family: 'Cinzel', serif !important;
 }
 
 .font-serif-stitch {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Playfair Display', serif !important;
 }
 
-/* Capa */
-.capa-bg {
-  position: absolute;
-  inset: 0;
-  background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCZOamM2gQylB9TgD3AcnYS59h3zW_O_TI4_NkE9Axm6nM50SGLTHCGjstqxCRKtNAopd9bHkPQwV6XoXBY6Ankj16vx9IaAk344mBbWsc-w3JonIAGAEbE1ZVH5wquKUquVp8KeX8AfJLXUaROe4NOSDqbv-cSiOSkH5efOiGAW4QU54_FRZkBhXQEh7M0ig7DMAZS_tGj7uMLBlLR794NdUr4aNgD-G2k9AT0HP0wBjyBrqkQvPM4n3QM_DPANIbTdV4mDFP0Vu6u');
-  background-size: cover;
-  background-position: center;
+.font-plain {
+  font-family: 'Lato', 'Inter', sans-serif !important;
 }
 
-.glass-button-stitch {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  transition: all 0.3s ease;
+/* Premium Effects */
+.glass-panel-stitch {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Texture Overlay */
 .texture-overlay-stitch {
-  position: absolute;
-  inset: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url('https://images.unsplash.com/photo-1621360841013-c768371e93cf?q=80&w=1000&auto=format&fit=crop');
   background-size: cover;
-  background-position: center;
-  opacity: 0.08;
+  opacity: 0.06;
   pointer-events: none;
+  z-index: 0;
   mix-blend-mode: overlay;
 }
 
-/* Watermark 40 */
-.watermark-40-stitch {
-  font-size: 12rem;
-  line-height: 1;
-  opacity: 0.08;
-  color: #4A2C40;
-  font-family: 'Playfair Display', serif;
-  position: absolute;
-  top: -2rem;
-  right: -1rem;
-  z-index: 0;
-  pointer-events: none;
-  letter-spacing: -0.05em;
+.gold-glow-stitch {
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
 }
 
-/* Pillar Card */
-.pillar-card-stitch {
-  background-color: white;
-  box-shadow: 0 4px 20px rgba(59, 9, 68, 0.05);
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
-/* Glow */
-.glow-stitch {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  background: rgba(88, 28, 135, 0.2);
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-.glow-btn-stitch {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15), inset 0 0 10px rgba(255, 255, 255, 0.05);
-}
-
-/* Cleanup old book styles */
-.book-container,
-.book-wrapper,
-.book-spine,
-.book-page,
-.book-page-inner,
-.book-cover,
-.cover-sub,
-.cover-title,
-.cover-subtitle,
-.cover-cross,
-.cover-instruction,
-.book-page-content,
-.page-header,
-.page-quote,
-.page-list,
-.page-list li,
-.pilar-box,
-.phases-summary,
-.phases-summary div,
-.page-final,
-.book-nav,
-.book-nav-btn,
-.book-page-indicator {
-  display: none !important;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.6;
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
 
-  50% {
-    transform: scale(1.05);
-    opacity: 0.9;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 0.6;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-/* Animations for page turning */
-.book-wrapper.page-0 {
-  transform: rotateY(0deg);
-}
-
-.book-wrapper:not(.page-0) {
-  box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.1);
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
