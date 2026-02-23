@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "wouter";
-import { DAYS, getLentDate, getCurrentLentDay, type DayData } from "@/data/days";
+import { Link, useParams, useLocation } from "wouter";
+import { DAYS, getLentDate, type DayData } from "@/data/days";
 import { getCheckins, toggleCheckin } from "@/lib/checkin";
 
 const LS_NOTES_KEY = (id: number) => `notes_dia_${id}`;
 
-/* ─── Helpers ────────────────────────────────── */
 function formatDate(d: Date) {
     return d.toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long" });
 }
@@ -17,128 +16,10 @@ function getFaseNumber(fase: string): number {
     return 4;
 }
 
-/* ─── Styles ─────────────────────────────────── */
-const S = {
-    page: {
-        minHeight: "100dvh",
-        background: "var(--linen, #F5F1E8)",
-        paddingBottom: 32,
-    } as React.CSSProperties,
-
-    topBar: {
-        display: "flex", alignItems: "flex-start",
-        justifyContent: "space-between", padding: "16px 20px",
-        paddingTop: "calc(16px + env(safe-area-inset-top))",
-    } as React.CSSProperties,
-    backLink: {
-        fontSize: 14, color: "#8B7355", fontFamily: "'Lora', serif",
-        background: "rgba(139,115,85,.08)", border: "1px solid #E8E0D0",
-        borderRadius: 8, padding: "6px 14px", cursor: "pointer", textDecoration: "none",
-    } as React.CSSProperties,
-    dayBadge: { textAlign: "right" as const } as React.CSSProperties,
-    dayNum: {
-        fontFamily: "'Playfair Display', serif", fontSize: 22,
-        fontWeight: 700, color: "#2C2416", lineHeight: 1,
-    } as React.CSSProperties,
-    faseTag: {
-        fontSize: 10, letterSpacing: "0.12em",
-        textTransform: "uppercase" as const, color: "#8B7355", marginTop: 2,
-    } as React.CSSProperties,
-
-    content: { padding: "0 20px" } as React.CSSProperties,
-
-    catLabel: {
-        display: "flex", alignItems: "center", gap: 6,
-        fontSize: 12, letterSpacing: "0.12em",
-        textTransform: "uppercase" as const,
-        color: "#C4943A", fontWeight: 700, marginTop: 8, marginBottom: 12,
-    } as React.CSSProperties,
-
-    title: {
-        fontFamily: "'Playfair Display', serif", fontSize: 28,
-        fontWeight: 700, color: "#2C2416", lineHeight: 1.25, margin: "0 0 6px",
-    } as React.CSSProperties,
-    subtitle: {
-        fontSize: 13, color: "#6B6B6B",
-        textDecoration: "underline", textDecorationColor: "rgba(107,107,107,.25)",
-        textUnderlineOffset: "3px", marginBottom: 24,
-    } as React.CSSProperties,
-
-    verseCard: {
-        border: "1.5px solid #E8E0D0", borderRadius: 14,
-        padding: "20px 22px", marginBottom: 28, background: "#FDFAF4",
-    } as React.CSSProperties,
-    verseText: {
-        fontFamily: "'Playfair Display', serif", fontSize: 17,
-        fontStyle: "italic", color: "#2C2416", lineHeight: 1.65, margin: 0,
-    } as React.CSSProperties,
-    verseRef: { fontSize: 13, color: "#C4943A", marginTop: 10 } as React.CSSProperties,
-
-    sectionLabel: {
-        display: "flex", alignItems: "center", gap: 8,
-        fontSize: 15, fontWeight: 700, color: "#2C2416", marginBottom: 12,
-    } as React.CSSProperties,
-
-    reflexao: {
-        fontSize: 15, color: "#2C2416", lineHeight: 1.8, marginBottom: 28,
-    } as React.CSSProperties,
-
-    practiceCard: {
-        border: "1.5px solid #E8E0D0", borderRadius: 14,
-        padding: "20px 22px", marginBottom: 28, background: "#FDFAF4",
-    } as React.CSSProperties,
-    practiceText: {
-        fontSize: 14, color: "#2C2416", lineHeight: 1.75, margin: 0,
-    } as React.CSSProperties,
-
-    notesCard: {
-        border: "1.5px solid #E8E0D0", borderRadius: 14,
-        padding: "20px 22px", marginBottom: 20, background: "#FDFAF4",
-    } as React.CSSProperties,
-    textarea: {
-        width: "100%", minHeight: 130, resize: "vertical" as const,
-        border: "1px solid #E8E0D0", borderRadius: 10,
-        padding: "12px 14px", fontSize: 14, fontFamily: "'Lora', serif",
-        color: "#2C2416", background: "#F5F1E8", outline: "none",
-    } as React.CSSProperties,
-    saveBtn: {
-        display: "block", marginLeft: "auto", marginTop: 12,
-        padding: "10px 22px", background: "#8B7355", color: "#fff",
-        border: "none", borderRadius: 10, fontSize: 13,
-        fontFamily: "'Lora', serif", fontWeight: 600, cursor: "pointer",
-    } as React.CSSProperties,
-
-    /* Check-in button */
-    checkinBtn: (checked: boolean) => ({
-        display: "flex", alignItems: "center", justifyContent: "center",
-        gap: 8, width: "100%", padding: "16px 0", marginBottom: 20,
-        background: checked ? "#4CAF50" : "#8B7355",
-        color: "#fff", border: "none", borderRadius: 14,
-        fontSize: 15, fontFamily: "'Playfair Display', serif",
-        fontWeight: 700, cursor: "pointer",
-        transition: "background 0.3s, transform 0.15s",
-    } as React.CSSProperties),
-
-    /* Navigation */
-    navCard: {
-        display: "flex", alignItems: "center", justifyContent: "flex-end",
-        gap: 8, padding: "16px 20px",
-        border: "1.5px solid #E8E0D0", borderRadius: 14,
-        background: "#FDFAF4", textDecoration: "none",
-    } as React.CSSProperties,
-    navInfo: { textAlign: "right" as const } as React.CSSProperties,
-    navDayLabel: {
-        fontFamily: "'Playfair Display', serif", fontSize: 16,
-        fontWeight: 700, color: "#2C2416",
-    } as React.CSSProperties,
-    navDayTitle: { fontSize: 12, color: "#6B6B6B" } as React.CSSProperties,
-    navArrow: { fontSize: 18, color: "#8B7355", marginLeft: 4 } as React.CSSProperties,
-};
-
 export function DayView() {
     const { id } = useParams<{ id: string }>();
     const dayId = parseInt(id ?? "1", 10);
-    const todayDay = getCurrentLentDay();
+    const [, setLocation] = useLocation();
 
     const [notes, setNotes] = useState("");
     const [saved, setSaved] = useState(false);
@@ -163,13 +44,13 @@ export function DayView() {
         setCheckedIn(updated.has(dayId));
     }
 
-    /* 404 */
+    /* 404 Guard */
     if (dayId < 1 || dayId > 40 || isNaN(dayId)) {
         return (
-            <div style={{ textAlign: "center", padding: "80px 24px" }}>
-                <h2 style={{ fontFamily: "'Playfair Display', serif" }}>Dia não encontrado</h2>
-                <Link href="/" style={{ color: "#8B7355", marginTop: 16, display: "block" }}>
-                    ← Voltar ao início
+            <div className="min-h-screen bg-quaresma-bg flex flex-col items-center justify-center p-10 text-center">
+                <h2 className="font-serif-stitch text-3xl text-quaresma-primary mb-4">Dia não encontrado</h2>
+                <Link href="/" className="font-cinzel text-xs tracking-widest text-quaresma-accent border-b border-quaresma-accent/30 pb-1">
+                    VOLTAR AO INÍCIO
                 </Link>
             </div>
         );
@@ -178,91 +59,131 @@ export function DayView() {
     const day: DayData = DAYS[dayId - 1];
     const date = getLentDate(dayId);
     const faseNum = getFaseNumber(day.fase);
-    const nextDay = dayId < 40 ? DAYS[dayId] : null;
-    const prevDay = dayId > 1 ? DAYS[dayId - 2] : null;
+    const nextDayId = dayId < 40 ? dayId + 1 : null;
+    const prevDayId = dayId > 1 ? dayId - 1 : null;
 
     return (
-        <div style={S.page}>
-            {/* ── Top bar ────────────────────────── */}
-            <div style={S.topBar}>
-                <Link href="/" style={S.backLink}>← Inicio</Link>
-                <div style={S.dayBadge}>
-                    <div style={S.dayNum}>D{String(dayId).padStart(2, "0")}</div>
-                    <div style={S.faseTag}>FASE {faseNum}</div>
-                </div>
-            </div>
+        <div className="min-h-screen bg-quaresma-bg text-quaresma-text font-plain selection:bg-quaresma-accent/20 pt-[env(safe-area-inset-top)] pb-[calc(32px+env(safe-area-inset-bottom))] [WebkitOverflowScrolling:touch]">
+            <div className="texture-overlay-quaresma"></div>
 
-            {/* ── Content ────────────────────────── */}
-            <div style={S.content}>
-                <div style={S.catLabel}>
-                    <span>{day.icone}</span>
-                    <span>DIA {dayId} DE 40</span>
-                </div>
-
-                <h1 style={S.title}>{day.tema}</h1>
-                <p style={S.subtitle}>{day.fase}</p>
-
-                {/* Verse card */}
-                <div style={S.verseCard}>
-                    <p style={S.verseText}>"{day.textoVersiculo}"</p>
-                    <p style={S.verseRef}>— {day.versiculo}</p>
-                </div>
-
-                {/* Reflexão */}
-                <div style={S.sectionLabel}><span>💬</span> Reflexão</div>
-                <p style={S.reflexao}>{day.reflexao}</p>
-
-                {/* Ação Prática */}
-                <div style={S.practiceCard}>
-                    <div style={{ ...S.sectionLabel, marginBottom: 10 }}>
-                        <span>🌿</span> Ação Prática
-                    </div>
-                    <p style={S.practiceText}>{day.acaoPratica}</p>
-                </div>
-
-                {/* Anotações */}
-                <div style={S.notesCard}>
-                    <div style={{ ...S.sectionLabel, marginBottom: 10 }}>
-                        <span>📝</span> Minhas Anotações
-                    </div>
-                    <textarea
-                        style={S.textarea}
-                        placeholder="Escreva suas reflexões pessoais aqui..."
-                        value={notes}
-                        onChange={(e) => { setNotes(e.target.value); setSaved(false); }}
-                    />
-                    <button style={S.saveBtn} onClick={saveNotes}>
-                        {saved ? "✓ Salvo!" : "Salvar Anotações"}
-                    </button>
-                </div>
-
-                {/* ── Check-in Button ──────────────── */}
-                <button style={S.checkinBtn(checkedIn)} onClick={handleCheckin}>
-                    {checkedIn ? "✓ Dia Completado" : "Marcar Dia como Concluído"}
+            {/* Header / Top Bar */}
+            <header className="p-4 md:p-6 flex justify-between items-center bg-quaresma-bg/90 backdrop-blur-md sticky top-0 z-30 border-b border-quaresma-accent/5">
+                <button
+                    onClick={() => setLocation("/")}
+                    className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-quaresma-primary/5 transition-all touch-manipulation"
+                >
+                    <span className="material-symbols-outlined text-quaresma-primary !text-2xl">arrow_back</span>
                 </button>
-            </div>
+                <div className="text-center">
+                    <span className="font-cinzel text-[9px] tracking-[0.3em] text-quaresma-accent block">DIA {String(dayId).padStart(2, "0")}</span>
+                    <span className="font-serif-stitch italic text-[10px] opacity-40 uppercase">FASE {faseNum}</span>
+                </div>
+                <div className="w-10"></div> {/* Spacer */}
+            </header>
 
-            {/* ── Bottom navigation ──────────────── */}
-            <div style={{ display: "flex", flexDirection: "column", gap: 10, margin: "0 20px" }}>
-                {prevDay && (
-                    <Link href={`/dia/${dayId - 1}`} style={{ ...S.navCard, justifyContent: "flex-start" }}>
-                        <span style={{ ...S.navArrow, marginLeft: 0, marginRight: 4 }}>←</span>
-                        <div style={{ textAlign: "left" }}>
-                            <div style={S.navDayLabel}>D{String(dayId - 1).padStart(2, "0")}</div>
-                            <div style={S.navDayTitle}>{prevDay.tema}</div>
+            {/* Main Content */}
+            <main className="relative z-10 p-6 md:p-10 max-w-lg mx-auto w-full space-y-10 animate-fade-in-up">
+
+                {/* Title Section */}
+                <div className="space-y-4">
+                    <div className="flex items-center gap-3 font-cinzel text-[10px] tracking-widest text-quaresma-accent font-bold">
+                        <span className="text-lg leading-none">{day.icone}</span>
+                        <span>{day.pilar.toUpperCase()}</span>
+                    </div>
+                    <h1 className="font-serif-stitch text-4xl md:text-5xl text-quaresma-primary leading-tight lowercase first-letter:uppercase">
+                        {day.tema}
+                    </h1>
+                    <p className="text-[11px] font-cinzel tracking-widest text-quaresma-primary/40 uppercase">
+                        {formatDate(date)}
+                    </p>
+                </div>
+
+                {/* Verse Card */}
+                <div className="card-quaresma space-y-4">
+                    <p className="font-serif-stitch text-xl italic text-quaresma-primary leading-relaxed">
+                        "{day.textoVersiculo}"
+                    </p>
+                    <div className="h-px w-8 bg-quaresma-accent/30"></div>
+                    <p className="font-cinzel text-[10px] tracking-widest text-quaresma-accent font-bold">
+                        — {day.versiculo}
+                    </p>
+                </div>
+
+                {/* Reflection */}
+                <section className="space-y-4 relative">
+                    <div className="watermark-40">{dayId}</div>
+                    <div className="flex items-center gap-2 font-cinzel text-[10px] tracking-[0.2em] font-bold text-quaresma-primary/60">
+                        <span className="material-symbols-outlined !text-sm">auto_stories</span>
+                        REFLEXÃO
+                    </div>
+                    <p className="text-base leading-relaxed text-quaresma-text/90 drop-cap font-light text-justify">
+                        {day.reflexao}
+                    </p>
+                </section>
+
+                {/* Action Card */}
+                <section className="space-y-4">
+                    <div className="flex items-center gap-2 font-cinzel text-[10px] tracking-[0.2em] font-bold text-quaresma-primary/60">
+                        <span className="material-symbols-outlined !text-sm">tempest</span>
+                        AÇÃO PRÁTICA
+                    </div>
+                    <div className="card-quaresma border-l-4 border-l-quaresma-accent">
+                        <p className="text-sm leading-relaxed text-quaresma-primary font-medium italic">
+                            {day.acaoPratica}
+                        </p>
+                    </div>
+                </section>
+
+                {/* Notes & Check-in */}
+                <section className="space-y-6">
+                    <div className="card-quaresma space-y-4 bg-quaresma-bg/50">
+                        <div className="flex items-center gap-2 font-cinzel text-[10px] tracking-[0.2em] font-bold text-quaresma-primary/60">
+                            <span className="material-symbols-outlined !text-sm">edit_note</span>
+                            ANOTAÇÕES PESSOAIS
                         </div>
-                    </Link>
-                )}
-                {nextDay && (
-                    <Link href={`/dia/${dayId + 1}`} style={S.navCard}>
-                        <div style={S.navInfo}>
-                            <div style={S.navDayLabel}>D{String(dayId + 1).padStart(2, "0")}</div>
-                            <div style={S.navDayTitle}>{nextDay.tema}</div>
-                        </div>
-                        <span style={S.navArrow}>→</span>
-                    </Link>
-                )}
-            </div>
+                        <textarea
+                            className="w-full min-h-[140px] bg-white/50 border border-quaresma-accent/10 rounded-xl p-4 text-sm font-plain focus:ring-1 focus:ring-quaresma-accent/30 outline-none transition-all"
+                            placeholder="O que o Espírito Santo falou ao seu coração hoje?"
+                            value={notes}
+                            onChange={(e) => { setNotes(e.target.value); setSaved(false); }}
+                        />
+                        <button
+                            onClick={saveNotes}
+                            className={`w-full py-3 rounded-xl font-cinzel text-[10px] tracking-widest transition-all ${saved ? 'bg-green-600 text-white' : 'bg-quaresma-primary text-white hover:brightness-110 active:scale-95'}`}
+                        >
+                            {saved ? "✓ SALVO" : "SALVAR ANOTAÇÕES"}
+                        </button>
+                    </div>
+
+                    <button
+                        onClick={handleCheckin}
+                        className={`glow-btn w-full !rounded-2xl py-5 touch-manipulation transition-all duration-500 ${checkedIn ? '!bg-green-600 !shadow-green-900/20' : ''}`}
+                    >
+                        <span className="font-cinzel text-[11px] tracking-[0.3em]">
+                            {checkedIn ? "DIA CONCLUÍDO ✓" : "CONCLUIR ESTE DIA"}
+                        </span>
+                    </button>
+                </section>
+
+                {/* Bottom Navigation */}
+                <nav className="flex flex-col gap-4 mt-10">
+                    {nextDayId && (
+                        <Link href={`/dia/${nextDayId}`} className="card-quaresma flex items-center justify-between group hover:border-quaresma-accent/40 transition-all active:scale-[0.98] touch-manipulation">
+                            <div className="space-y-1">
+                                <span className="font-cinzel text-[9px] tracking-widest text-quaresma-accent">PRÓXIMO DIA</span>
+                                <h4 className="font-serif-stitch text-lg text-quaresma-primary group-hover:text-quaresma-accent transition-colors">D{String(nextDayId).padStart(2, "0")} · {DAYS[nextDayId - 1].tema}</h4>
+                            </div>
+                            <span className="material-symbols-outlined text-quaresma-accent group-hover:translate-x-1 transition-transform">east</span>
+                        </Link>
+                    )}
+                    {prevDayId && (
+                        <Link href={`/dia/${prevDayId}`} className="flex items-center gap-2 font-cinzel text-[10px] tracking-widest text-quaresma-primary/40 hover:text-quaresma-accent transition-colors mx-auto p-4 touch-manipulation">
+                            <span className="material-symbols-outlined !text-sm">west</span>
+                            VOLTAR AO DIA ANTERIOR
+                        </Link>
+                    )}
+                </nav>
+            </main>
         </div>
     );
 }
