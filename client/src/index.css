@@ -1,5 +1,4 @@
-/* 1. External Imports MUST be at the very top */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&family=Inter:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Lato:wght@300;400;700&family=Inter:wght@300;400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block');
 
 @import "tailwindcss";
@@ -16,6 +15,23 @@
   --font-plain: "Lato", "Inter", sans-serif;
 }
 
+/* 1. Global Variables (Matching user snippets exactly) */
+:root {
+  --deep-purple: #3D0B0D;
+  --primary-purple: #3D0B0D;
+  --accent-purple: #3D0B0D;
+  --accent-gold: #C5A059;
+  --secondary-gold: #C5A059;
+  --muted-gold: #C5A059;
+  --text-dark: #2D2926;
+  --text-primary: #2D2926;
+  --text-light: #5A5A5A;
+  --text-secondary: #3D0B0D;
+  --bg-paper: #F9F8F3;
+  --bg-deep: #1A1721;
+}
+
+/* 2. Utility Classes from User Snippets */
 @utility card-quaresma {
   background: var(--color-quaresma-card);
   border-radius: 12px;
@@ -24,7 +40,50 @@
   padding: 24px;
 }
 
-/* 2. Robust Icon Support */
+.watermark-40 {
+  position: absolute;
+  right: -1rem;
+  top: -2rem;
+  font-size: 10rem;
+  font-family: var(--font-serif-stitch);
+  color: var(--accent-gold);
+  opacity: 0.04;
+  pointer-events: none;
+  font-style: italic;
+}
+
+.drop-cap::first-letter {
+  font-size: 3.5rem;
+  float: left;
+  margin-right: 0.75rem;
+  color: var(--accent-gold);
+  font-family: var(--font-cinzel);
+  line-height: 1;
+}
+
+.quote-border {
+  border-left: 2px solid var(--primary-purple);
+  padding-left: 1.5rem;
+}
+
+.pillar-card {
+  background: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(61, 11, 13, 0.05);
+}
+
+.glow-btn {
+  background: var(--primary-purple);
+  box-shadow: 0 10px 30px rgba(61, 11, 13, 0.2);
+  transition: all 0.3s ease;
+}
+
+.glow-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 5px 15px rgba(61, 11, 13, 0.1);
+}
+
+/* 3. Robust Icon Support */
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined' !important;
   font-weight: normal;
@@ -41,15 +100,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   font-feature-settings: 'liga';
-}
-
-/* 3. Global Reset & Legacy Mappings */
-:root {
-  --accent-gold: #C5A059;
-  --text-primary: #2D2926;
-  --text-secondary: #3D0B0D;
-  --accent-purple: #3D0B0D;
-  --deep-purple: #3D0B0D;
 }
 
 *,
@@ -75,12 +125,18 @@ h3 {
   font-family: 'Playfair Display', Georgia, serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* Texture Overlay */
+.texture-overlay-quaresma {
+  position: fixed;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1621360841013-c768371e93cf?q=80&w=1000&auto=format&fit=crop');
+  background-size: cover;
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: multiply;
 }
 
-/* ─── Animations ─────────────────────────────────── */
 @keyframes fade-in-up {
   from {
     opacity: 0;
@@ -95,16 +151,4 @@ a {
 
 .animate-fade-in-up {
   animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* Texture Overlay */
-.texture-overlay-quaresma {
-  position: fixed;
-  inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1621360841013-c768371e93cf?q=80&w=1000&auto=format&fit=crop');
-  background-size: cover;
-  opacity: 0.04;
-  pointer-events: none;
-  z-index: 0;
-  mix-blend-mode: multiply;
 }

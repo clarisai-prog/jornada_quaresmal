@@ -77,7 +77,7 @@ export const IntroBook: React.FC = () => {
     const currentSlide = slides[page];
 
     return (
-        <div className="fixed inset-0 bg-quaresma-bg text-quaresma-text font-plain overflow-y-auto flex flex-col selection:bg-quaresma-accent/20 pt-[env(safe-area-inset-top)]">
+        <div className="fixed inset-0 bg-quaresma-bg text-quaresma-text font-plain overflow-y-auto flex flex-col selection:bg-quaresma-accent/20 pt-[env(safe-area-inset-top)] [WebkitOverflowScrolling:touch]">
             <div className="texture-overlay-quaresma"></div>
 
             {/* Header */}
