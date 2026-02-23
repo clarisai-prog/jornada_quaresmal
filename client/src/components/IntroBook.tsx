@@ -77,7 +77,7 @@ export const IntroBook: React.FC = () => {
     const currentSlide = slides[page];
 
     return (
-        <div className="fixed inset-0 bg-quaresma-bg text-quaresma-text font-plain overflow-y-auto flex flex-col selection:bg-quaresma-accent/20">
+        <div className="fixed inset-0 bg-quaresma-bg text-quaresma-text font-plain overflow-y-auto flex flex-col selection:bg-quaresma-accent/20 pt-[env(safe-area-inset-top)]">
             <div className="texture-overlay-quaresma"></div>
 
             {/* Header */}
@@ -189,7 +189,7 @@ export const IntroBook: React.FC = () => {
 
                             <button
                                 onClick={() => setLocation("/")}
-                                className="w-full bg-quaresma-primary text-white py-5 rounded-2xl font-cinzel text-[11px] tracking-[0.3em] transition-all hover:brightness-125 active:scale-[0.98] shadow-2xl shadow-quaresma-primary/30 flex items-center justify-center gap-3"
+                                className="w-full bg-quaresma-primary text-white py-5 rounded-2xl font-cinzel text-[11px] tracking-[0.3em] transition-all hover:brightness-125 active:scale-[0.98] shadow-2xl shadow-quaresma-primary/30 flex items-center justify-center gap-3 touch-manipulation mb-[env(safe-area-inset-bottom)]"
                             >
                                 INICIAR JORNADA
                                 <span className="material-symbols-outlined !text-lg">church</span>
@@ -201,7 +201,7 @@ export const IntroBook: React.FC = () => {
 
             {/* Footer Navigation (Sticky) */}
             {currentSlide.type !== "final" && (
-                <footer className="p-6 md:p-8 bg-quaresma-bg/95 backdrop-blur-md flex items-center justify-between sticky bottom-0 z-30 border-t border-quaresma-accent/5">
+                <footer className="p-6 md:p-8 pb-[calc(24px+env(safe-area-inset-bottom))] bg-quaresma-bg/95 backdrop-blur-md flex items-center justify-between sticky bottom-0 z-30 border-t border-quaresma-accent/5">
                     <button
                         onClick={() => page > 0 && setPage(page - 1)}
                         className={`w-12 h-12 flex items-center justify-center rounded-full hover:bg-quaresma-primary/5 transition-all ${page === 0 ? 'opacity-0 pointer-events-none' : 'opacity-60 hover:opacity-100 active:scale-90'}`}
