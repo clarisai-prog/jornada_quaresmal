@@ -46,13 +46,13 @@ export const IntroBook: React.FC = () => {
         },
         {
             title: "A Mecânica da Graça",
-            subtitle: "JORNADA QUARESMAL",
-            content: "Um sistema perfeito e interdependente para sustentar o seu recomeço.",
+            subtitle: "MATEUS 6",
+            content: "Para que este recomeço seja sustentável, Cristo nos entrega três pilares que não funcionam isolados. Rasgar o coração significa parar de fingir e entregar a Ele a sua fraqueza.",
             type: "mechanics",
             pillars: [
-                { icon: "U", title: "O Jejum", text: "A restrição cria um vácuo interior, quebrando a dependência de estímulos externos." },
-                { icon: "+", title: "A Oração", text: "Entra para preencher o espaço que o jejum abriu, enchendo a alma com a presença divina." },
-                { icon: "↑", title: "A Esmola", text: "A graça não é retida, ela transborda em direção ao próximo." }
+                { icon: "U", title: "O Jejum", text: "A restrição (comida, telas, conforto) cria um vácuo interior, quebrando a dependência de estímulos. Sem oração, é apenas dieta." },
+                { icon: "+", title: "A Oração", text: "Preenche o espaço que o jejum abriu, enchendo a alma com a presença divina no silêncio do quarto (Mt 6:6)." },
+                { icon: "↑", title: "A Esmola", text: "A graça não é retida, ela transborda. É o ato de escoar a graça recebida em direção ao próximo (Mt 6:3)." }
             ]
         },
         {
