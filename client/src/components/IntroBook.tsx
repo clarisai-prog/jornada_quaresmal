@@ -13,14 +13,34 @@ export const IntroBook: React.FC = () => {
             type: "capa"
         },
         {
-            title: "O Mistério dos 40 Dias",
-            subtitle: "TEOLOGIA DO TEMPO",
-            content: "O número quarenta figura como o arquétipo bíblico universal da gestação de uma nova realidade.",
+            title: "O seu momento ideal para começar é agora",
+            subtitle: "INTRODUÇÃO",
+            content: "Bem-vindo ao seu deserto. No seio da tradição bíblica e cristã, o deserto nunca foi um lugar de abandono ou punição, mas o ambiente exato onde Deus atrai os Seus filhos para falar ao coração.",
             type: "content",
             details: [
-                { id: "01", title: "ISRAEL NO DESERTO", text: "Foram quarenta anos em que o povo de Israel vagou para purgar a mentalidade de escravidão." },
-                { id: "02", title: "MOISÉS NO SINAI", text: "Quarenta dias de jejum no Monte Sinai para receber a Lei, face a face com o Divino." },
-                { id: "03", title: "ELIAS NO HOREBE", text: "A caminhada purificadora do profeta até a montanha de Deus, sustentado pelo pão do céu." }
+                { id: "✝", title: "O DESERTO", text: "O ambiente exato onde Deus atrai os Seus filhos para falar ao coração." },
+                { id: "✝", title: "RELACIONAMENTO", text: "O catolicismo é um relacionamento vivo com uma Pessoa — Jesus Cristo — e não o cumprimento estéril de uma planilha." }
+            ]
+        },
+        {
+            title: "Deus não faz chamada",
+            subtitle: "A TEOLOGIA DO AGORA",
+            content: "Se você pulou dias ou se sentiu atrasado, abandone a linguagem do fracasso. Deus não olha para a planilha, Ele olha para o seu coração hoje.",
+            type: "content",
+            details: [
+                { id: "01", title: "SEM COBRANÇAS", text: "Não importa se você começou no primeiro dia ou na metade do caminho." },
+                { id: "02", title: "O MOMENTO", text: "O seu momento ideal para começar é exatamente agora." }
+            ]
+        },
+        {
+            title: "O Mistério dos 40 Dias",
+            subtitle: "O ARQUÉTIPO DIVINO",
+            content: "Na Bíblia, o número quarenta é o arquétipo universal da gestação de uma nova realidade espiritual.",
+            type: "content",
+            details: [
+                { id: "40", title: "ISRAEL", text: "Quarenta anos para purgar a mentalidade de escravidão no deserto." },
+                { id: "40", title: "MOISÉS", text: "Quarenta dias de jejum no Monte Sinai para receber a Lei." },
+                { id: "40", title: "CRISTO", text: "Quarenta dias vencendo o demônio para reverter a queda da humanidade." }
             ]
         },
         {
@@ -37,7 +57,7 @@ export const IntroBook: React.FC = () => {
         {
             title: "O Chamado Final",
             subtitle: "JOEL 2:13",
-            content: "\"Rasgai o vosso coração, e não as vossas vestes.\"",
+            content: "Rasgai o vosso coração, e não as vossas vestes.",
             type: "final"
         }
     ];
