@@ -152,12 +152,12 @@ export const IntroBook: React.FC = () => {
                         </div>
                     ) : currentSlide.type === "content" ? (
                         <div className="space-y-10 relative pb-10">
-                            <div className="absolute -right-4 -top-8 text-[10rem] md:text-[12rem] font-serif-stitch text-quaresma-accent opacity-[0.04] pointer-events-none select-none">40</div>
+                            <div className="watermark-40">40</div>
                             <div className="space-y-5 pt-10">
-                                <h1 className="font-serif-stitch text-4xl md:text-5xl text-quaresma-primary leading-tight">
+                                <h1 className="font-serif-stitch text-4xl md:text-5xl text-[var(--text-dark)] leading-tight">
                                     {currentSlide.title}
                                 </h1>
-                                <p className="text-sm md:text-base leading-relaxed opacity-80 border-l-3 border-quaresma-accent/30 pl-6 italic font-light">
+                                <p className="text-sm md:text-base leading-relaxed opacity-80 quote-border italic font-light">
                                     "{currentSlide.content}"
                                 </p>
                             </div>
@@ -165,10 +165,10 @@ export const IntroBook: React.FC = () => {
                             <div className="space-y-8">
                                 {currentSlide.details?.map((detail, i) => (
                                     <div key={i} className="flex gap-5 items-start group">
-                                        <span className="font-cinzel text-quaresma-accent font-bold text-lg leading-none pt-1 opacity-60 group-hover:opacity-100 transition-opacity">{detail.id}</span>
+                                        <span className="font-cinzel text-[var(--accent-gold)] font-bold text-lg leading-none pt-1 opacity-60 group-hover:opacity-100 transition-opacity">{detail.id}</span>
                                         <div className="space-y-2">
-                                            <h4 className="font-cinzel text-[11px] tracking-widest font-bold text-quaresma-primary uppercase">{detail.title}</h4>
-                                            <p className="text-sm leading-relaxed opacity-70 font-light text-pretty">{detail.text}</p>
+                                            <h4 className="font-cinzel text-[11px] tracking-widest font-bold text-[var(--text-dark)] uppercase">{detail.title}</h4>
+                                            <p className="text-sm leading-relaxed text-[var(--text-light)] font-light text-pretty drop-cap">{detail.text}</p>
                                         </div>
                                     </div>
                                 ))}
