@@ -56,9 +56,20 @@ export const IntroBook: React.FC = () => {
             ]
         },
         {
+            title: "Como usar este livro",
+            subtitle: "GUIA PRÁTICO",
+            content: "Este não é um teste de resistência. É um manual para o reencontro espiritual.",
+            type: "mechanics",
+            pillars: [
+                { icon: "01", title: "Reflexões Diárias", text: "Encontre 40 reflexões (D01 a D40). Não há datas fixas. Leia e deixe o versículo iluminar sua consciência." },
+                { icon: "02", title: "A Micro-Ação", text: "Espiritualidade sem obras é ilusão. Execute a ação prática que traduz sua oração em atitude visível." },
+                { icon: "03", title: "Misericórdia", text: "Se falhar, não tente 'passar fome em dobro'. Apenas levante-se e retome de onde parou." }
+            ]
+        },
+        {
             title: "O Chamado Final",
             subtitle: "JOEL 2:13",
-            content: "Rasgai o vosso coração, e não as vossas vestes.",
+            content: "Rasgai o vosso coração, e não as vossas vestes. Somos pó, mas o sopro do Espírito nos garante a eternidade.",
             type: "final"
         }
     ];
