@@ -34,13 +34,14 @@ export const IntroBook: React.FC = () => {
         },
         {
             title: "O Mistério dos 40 Dias",
-            subtitle: "O ARQUÉTIPO DIVINO",
-            content: "Na Bíblia, o número quarenta é o arquétipo universal da gestação de uma nova realidade espiritual.",
+            subtitle: "TEOLOGIA DO TEMPO",
+            content: "Na Bíblia, o número quarenta é o arquétipo universal da gestação de uma nova realidade. Não é apenas um tempo cronológico, mas um tempo kairótico — o momento oportuno de Deus.",
             type: "content",
             details: [
-                { id: "40", title: "ISRAEL", text: "Quarenta anos para purgar a mentalidade de escravidão no deserto." },
-                { id: "40", title: "MOISÉS", text: "Quarenta dias de jejum no Monte Sinai para receber a Lei." },
-                { id: "40", title: "CRISTO", text: "Quarenta dias vencendo o demônio para reverter a queda da humanidade." }
+                { id: "01", title: "ISRAEL NO DESERTO", text: "Quarenta anos para purgar a mentalidade de escravidão antes de adentrar a Terra Prometida (Dt 8)." },
+                { id: "02", title: "MOISÉS NO SINAI", text: "Quarenta dias de jejum para receber a Lei, face a face com o Divino (Êx 34:28)." },
+                { id: "03", title: "ELIAS NO HOREBE", text: "A caminhada purificadora sustentado pelo pão do céu até a montanha de Deus (1 Rs 19:8)." },
+                { id: "✝", title: "O NOVO ADÃO", text: "Jesus inverteu a queda de nossos primeiros pais unindo a nossa vida ao Seu mistério no deserto." }
             ]
         },
         {
