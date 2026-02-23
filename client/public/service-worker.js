@@ -7,7 +7,7 @@
  * o SW tentava fazer cache de recursos que não existem nesse caminho.
  */
 
-const CACHE_VERSION = "quaresma-v7";
+const CACHE_VERSION = "quaresma-v8";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const DYNAMIC_CACHE = `${CACHE_VERSION}-dynamic`;
 const FONT_CACHE = `${CACHE_VERSION}-fonts`;

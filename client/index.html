@@ -1,78 +1,84 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
 
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
-    />
+<head>
+  <meta charset="UTF-8" />
 
-    <!-- PWA -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Jornada Quaresmal" />
-    <meta name="apple-touch-fullscreen" content="yes" />
-    <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
 
-    <!-- Ícones Apple -->
-    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="icons/icon-120.png" />
+  <!-- PWA -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Jornada Quaresmal" />
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
 
-    <!-- Splash screens iOS -->
-    <link rel="apple-touch-startup-image" href="icons/splash-2048x2732.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" />
-    <link rel="apple-touch-startup-image" href="icons/splash-1668x2388.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" />
-    <link rel="apple-touch-startup-image" href="icons/splash-1170x2532.png" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)" />
-    <link rel="apple-touch-startup-image" href="icons/splash-1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" />
-    <link rel="apple-touch-startup-image" href="icons/splash-750x1334.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" />
+  <!-- Ícones Apple -->
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="icons/icon-120.png" />
 
-    <!-- ✅ FIX: manifest.json com path relativo (funciona com base do Vite) -->
-    <link rel="manifest" href="manifest.json" />
+  <!-- Splash screens iOS -->
+  <link rel="apple-touch-startup-image" href="icons/splash-2048x2732.png"
+    media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" />
+  <link rel="apple-touch-startup-image" href="icons/splash-1668x2388.png"
+    media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" />
+  <link rel="apple-touch-startup-image" href="icons/splash-1170x2532.png"
+    media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3)" />
+  <link rel="apple-touch-startup-image" href="icons/splash-1125x2436.png"
+    media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" />
+  <link rel="apple-touch-startup-image" href="icons/splash-750x1334.png"
+    media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png" />
+  <!-- ✅ FIX: manifest.json com path relativo (funciona com base do Vite) -->
+  <link rel="manifest" href="manifest.json" />
 
-    <title>Jornada Quaresmal — O Grande Recomeço</title>
-    <meta name="description" content="40 dias de reflexão, oração, jejum e esmola para uma Quaresma transformadora. PWA para iPhone e iPad." />
-    <meta name="theme-color" content="#F9F8F3" />
-    <meta name="robots" content="noindex, nofollow" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png" />
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Jornada Quaresmal — O Grande Recomeço" />
-    <meta property="og:description" content="40 dias de reflexão, oração, jejum e esmola para uma Quaresma transformadora." />
-    <meta property="og:image" content="icons/og-image.png" />
+  <title>Jornada Quaresmal — O Grande Recomeço</title>
+  <meta name="description"
+    content="40 dias de reflexão, oração, jejum e esmola para uma Quaresma transformadora. PWA para iPhone e iPad." />
+  <meta name="theme-color" content="#F9F8F3" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="robots" content="noindex, nofollow" />
 
-    <!-- Fontes -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    <!-- ✅ Robust Font Loading -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;1,400&family=Lato:wght@300;400&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=block" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Jornada Quaresmal — O Grande Recomeço" />
+  <meta property="og:description"
+    content="40 dias de reflexão, oração, jejum e esmola para uma Quaresma transformadora." />
+  <meta property="og:image" content="icons/og-image.png" />
 
-    <script>
-      /**
-       * ✅ FIX: Recupera rota salva pelo 404.html
-       * Restaura path + ?t=TOKEN antes do React montar — transparente para o app
-       */
-      (function () {
-        try {
-          var r = JSON.parse(sessionStorage.getItem("__spa_redirect__") || "null");
-          if (r) {
-            sessionStorage.removeItem("__spa_redirect__");
-            var target = (r.path || "/") + (r.search || "") + (r.hash || "");
-            window.history.replaceState(null, "", target);
-          }
-        } catch (e) {}
-      })();
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  <!-- Fontes Robustas -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;1,400&family=Lato:wght@300;400&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block" />
+
+  <script>
+    /**
+     * ✅ FIX: Recupera rota salva pelo 404.html
+     * Restaura path + ?t=TOKEN antes do React montar — transparente para o app
+     */
+    (function () {
+      try {
+        var r = JSON.parse(sessionStorage.getItem("__spa_redirect__") || "null");
+        if (r) {
+          sessionStorage.removeItem("__spa_redirect__");
+          var target = (r.path || "/") + (r.search || "") + (r.hash || "");
+          window.history.replaceState(null, "", target);
+        }
+      } catch (e) { }
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>

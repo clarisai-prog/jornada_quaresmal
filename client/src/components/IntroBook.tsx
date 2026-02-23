@@ -77,20 +77,20 @@ export const IntroBook: React.FC = () => {
     const currentSlide = slides[page];
 
     return (
-        <div className="fixed inset-0 bg-quaresma-bg text-quaresma-text font-plain overflow-y-auto flex flex-col selection:bg-quaresma-accent/20 pt-[env(safe-area-inset-top)] [WebkitOverflowScrolling:touch]">
+        <div className="fixed inset-0 bg-[var(--bg-paper)] text-[var(--text-dark)] font-plain overflow-y-auto flex flex-col selection:bg-[var(--accent-gold)]/20 pt-[env(safe-area-inset-top)] [WebkitOverflowScrolling:touch]">
             <div className="texture-overlay-quaresma"></div>
 
             {/* Header */}
-            <header className="p-4 md:p-6 flex justify-between items-center bg-quaresma-bg/90 backdrop-blur-md sticky top-0 z-30 border-b border-quaresma-accent/5">
+            <header className="p-4 md:p-6 flex justify-between items-center bg-[var(--bg-paper)]/90 backdrop-blur-md sticky top-0 z-30 border-b border-[var(--accent-gold)]/5">
                 <button
                     onClick={() => page > 0 ? setPage(page - 1) : setLocation("/")}
-                    className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-quaresma-primary/5 active:scale-90 transition-all"
+                    className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[var(--primary-purple)]/5 active:scale-90 transition-all touch-manipulation"
                     aria-label="Voltar"
                 >
-                    <span className="material-symbols-outlined text-quaresma-primary !text-2xl">arrow_back</span>
+                    <span className="material-symbols-outlined text-[var(--primary-purple)] !text-2xl">arrow_back</span>
                 </button>
                 <div className="text-center">
-                    <span className="font-cinzel text-[9px] md:text-[10px] tracking-[0.3em] uppercase text-quaresma-accent block">
+                    <span className="font-cinzel text-[9px] md:text-[10px] tracking-[0.3em] uppercase text-[var(--accent-gold)] block">
                         JORNADA QUARESMAL
                     </span>
                     <span className="font-serif-stitch italic text-[10px] opacity-40">
@@ -98,10 +98,10 @@ export const IntroBook: React.FC = () => {
                     </span>
                 </div>
                 <button
-                    className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-quaresma-primary/5 active:scale-90 transition-all opacity-40"
+                    className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[var(--primary-purple)]/5 active:scale-90 transition-all opacity-40 touch-manipulation"
                     aria-label="Opções"
                 >
-                    <span className="material-symbols-outlined text-quaresma-primary !text-2xl">more_horiz</span>
+                    <span className="material-symbols-outlined text-[var(--primary-purple)] !text-2xl">more_horiz</span>
                 </button>
             </header>
 
@@ -110,40 +110,39 @@ export const IntroBook: React.FC = () => {
                 <div key={page} className="animate-fade-in-up space-y-10 md:space-y-12">
                     {currentSlide.type === "capa" ? (
                         <div className="pt-8 text-center space-y-8">
-                            <div className="h-px w-10 bg-quaresma-accent/40 mx-auto"></div>
-                            <h1 className="font-serif-stitch text-5xl md:text-6xl text-quaresma-primary leading-[1.1]">
+                            <div className="h-px w-10 bg-[var(--accent-gold)]/40 mx-auto"></div>
+                            <h1 className="font-serif-stitch text-5xl md:text-6xl text-[var(--primary-purple)] leading-[1.1]">
                                 {currentSlide.title.split(' ')[0]} <br />
                                 <span className="italic font-light">{currentSlide.title.split(' ').slice(1).join(' ')}</span>
                             </h1>
-                            <p className="text-sm md:text-base leading-relaxed opacity-70 max-w-[300px] mx-auto text-pretty">
+                            <p className="text-sm md:text-base leading-relaxed opacity-70 max-w-[300px] mx-auto text-pretty font-light">
                                 {currentSlide.content}
                             </p>
                         </div>
                     ) : currentSlide.type === "mechanics" ? (
                         <div className="space-y-10">
                             <div className="text-center space-y-4">
-                                <div className="h-px w-10 bg-quaresma-accent/40 mx-auto mb-6"></div>
-                                <h1 className="font-serif-stitch text-4xl md:text-5xl text-quaresma-primary leading-tight">
+                                <div className="h-px w-10 bg-[var(--accent-gold)]/40 mx-auto mb-6"></div>
+                                <h1 className="font-serif-stitch text-4xl md:text-5xl text-[var(--primary-purple)] leading-tight">
                                     {currentSlide.title.split(' ')[0]} <br />
                                     <span className="italic font-light">{currentSlide.title.split(' ').slice(1).join(' ')}</span>
                                 </h1>
-                                <p className="text-sm opacity-60 max-w-[320px] mx-auto">
+                                <p className="text-sm opacity-60 max-w-[320px] mx-auto font-light">
                                     {currentSlide.content}
                                 </p>
                             </div>
 
                             <div className="space-y-5">
                                 {currentSlide.pillars?.map((pillar, i) => (
-                                    <div key={i} className="card-quaresma flex gap-5 items-start relative overflow-hidden group hover:shadow-xl transition-shadow duration-500">
-                                        <div className="w-12 h-12 flex items-center justify-center rounded-2xl bg-quaresma-primary/5 text-quaresma-primary shrink-0">
+                                    <div key={i} className="pillar-card flex gap-5 items-start">
+                                        <div className="w-12 h-12 flex items-center justify-center rounded-2xl bg-[var(--primary-purple)]/5 text-[var(--primary-purple)] shrink-0">
                                             <span className="text-2xl font-serif-stitch italic">{pillar.icon}</span>
                                         </div>
-                                        <div className="space-y-1.5 pr-4">
-                                            <h4 className="font-serif-stitch italic text-xl text-quaresma-primary">{pillar.title}</h4>
-                                            <p className="text-[13px] leading-relaxed opacity-70 font-light">{pillar.text}</p>
+                                        <div className="space-y-1.5 pr-4 relative z-10">
+                                            <h4 className="font-serif-stitch italic text-xl text-[var(--primary-purple)]">{pillar.title}</h4>
+                                            <p className="text-[13px] leading-relaxed text-[var(--text-light)] font-light">{pillar.text}</p>
                                         </div>
-                                        {/* Decorative watermark icon */}
-                                        <div className="absolute -right-6 -bottom-6 opacity-[0.03] text-8xl font-serif-stitch select-none pointer-events-none group-hover:opacity-[0.06] transition-opacity">
+                                        <div className="absolute -right-6 -bottom-6 opacity-[0.03] text-8xl font-serif-stitch select-none pointer-events-none">
                                             {pillar.icon}
                                         </div>
                                     </div>
@@ -168,7 +167,9 @@ export const IntroBook: React.FC = () => {
                                         <span className="font-cinzel text-[var(--accent-gold)] font-bold text-lg leading-none pt-1 opacity-60 group-hover:opacity-100 transition-opacity">{detail.id}</span>
                                         <div className="space-y-2">
                                             <h4 className="font-cinzel text-[11px] tracking-widest font-bold text-[var(--text-dark)] uppercase">{detail.title}</h4>
-                                            <p className="text-sm leading-relaxed text-[var(--text-light)] font-light text-pretty drop-cap">{detail.text}</p>
+                                            <p className="text-sm leading-relaxed text-[var(--text-light)] font-light text-pretty drop-cap">
+                                                {detail.text}
+                                            </p>
                                         </div>
                                     </div>
                                 ))}
@@ -177,21 +178,21 @@ export const IntroBook: React.FC = () => {
                     ) : (
                         <div className="pt-20 text-center space-y-16">
                             <div className="space-y-6">
-                                <span className="text-quaresma-accent text-5xl opacity-40 italic font-serif-stitch">"</span>
-                                <h2 className="font-serif-stitch text-3xl md:text-4xl text-quaresma-primary leading-snug px-4 italic font-light">
+                                <span className="text-[var(--accent-gold)] text-5xl opacity-40 italic font-serif-stitch">"</span>
+                                <h2 className="font-serif-stitch text-3xl md:text-4xl text-[var(--primary-purple)] leading-snug px-4 italic font-light">
                                     {currentSlide.content}
                                 </h2>
-                                <div className="h-px w-8 bg-quaresma-accent/30 mx-auto mt-8"></div>
-                                <span className="block font-cinzel text-[10px] tracking-[0.4em] text-quaresma-accent uppercase pt-2 opacity-60">
+                                <div className="h-px w-8 bg-[var(--accent-gold)]/30 mx-auto mt-8"></div>
+                                <span className="block font-cinzel text-[10px] tracking-[0.4em] text-[var(--accent-gold)] uppercase pt-2 opacity-60">
                                     {currentSlide.subtitle}
                                 </span>
                             </div>
 
                             <button
                                 onClick={() => setLocation("/")}
-                                className="w-full bg-quaresma-primary text-white py-5 rounded-2xl font-cinzel text-[11px] tracking-[0.3em] transition-all hover:brightness-125 active:scale-[0.98] shadow-2xl shadow-quaresma-primary/30 flex items-center justify-center gap-3 touch-manipulation mb-[env(safe-area-inset-bottom)]"
+                                className="glow-btn touch-manipulation mb-[env(safe-area-inset-bottom)]"
                             >
-                                INICIAR JORNADA
+                                <span className="font-cinzel text-[11px] tracking-[0.3em]">INICIAR JORNADA</span>
                                 <span className="material-symbols-outlined !text-lg">church</span>
                             </button>
                         </div>
@@ -201,26 +202,26 @@ export const IntroBook: React.FC = () => {
 
             {/* Footer Navigation (Sticky) */}
             {currentSlide.type !== "final" && (
-                <footer className="p-6 md:p-8 pb-[calc(24px+env(safe-area-inset-bottom))] bg-quaresma-bg/95 backdrop-blur-md flex items-center justify-between sticky bottom-0 z-30 border-t border-quaresma-accent/5">
+                <footer className="p-6 md:p-8 pb-[calc(24px+env(safe-area-inset-bottom))] bg-[var(--bg-paper)]/95 backdrop-blur-md flex items-center justify-between sticky bottom-0 z-30 border-t border-[var(--accent-gold)]/5">
                     <button
                         onClick={() => page > 0 && setPage(page - 1)}
-                        className={`w-12 h-12 flex items-center justify-center rounded-full hover:bg-quaresma-primary/5 transition-all ${page === 0 ? 'opacity-0 pointer-events-none' : 'opacity-60 hover:opacity-100 active:scale-90'}`}
+                        className={`w-12 h-12 flex items-center justify-center rounded-full hover:bg-[var(--primary-purple)]/5 transition-all touch-manipulation ${page === 0 ? 'opacity-0 pointer-events-none' : 'opacity-60 hover:opacity-100 active:scale-90'}`}
                         aria-label="Anterior"
                     >
-                        <span className="material-symbols-outlined !text-2xl text-quaresma-primary">west</span>
+                        <span className="material-symbols-outlined !text-2xl text-[var(--primary-purple)]">west</span>
                     </button>
 
                     <div className="flex gap-1.5">
                         {slides.map((_, i) => (
-                            <div key={i} className={`h-1 rounded-full transition-all duration-300 ${i === page ? 'w-4 bg-quaresma-accent' : 'w-1 bg-quaresma-accent/20'}`}></div>
+                            <div key={i} className={`h-1 rounded-full transition-all duration-300 ${i === page ? 'w-4 bg-[var(--accent-gold)]' : 'w-1 bg-[var(--accent-gold)]/20'}`}></div>
                         ))}
                     </div>
 
                     <button
                         onClick={() => page < slides.length - 1 && setPage(page + 1)}
-                        className={`flex items-center gap-3 px-6 py-3 rounded-full bg-quaresma-primary/5 hover:bg-quaresma-primary/10 text-quaresma-accent transition-all active:scale-95 group touch-manipulation ${page === slides.length - 1 ? 'opacity-0 pointer-events-none' : ''}`}
+                        className={`flex items-center gap-3 px-6 py-3 rounded-full bg-[var(--primary-purple)]/5 hover:bg-[var(--primary-purple)]/10 text-[var(--accent-gold)] transition-all active:scale-95 group touch-manipulation ${page === slides.length - 1 ? 'opacity-0 pointer-events-none' : ''}`}
                     >
-                        <span className="font-cinzel text-[10px] tracking-[0.2em] font-bold group-hover:text-quaresma-primary transition-colors">PRÓXIMO</span>
+                        <span className="font-cinzel text-[10px] tracking-[0.2em] font-bold group-hover:text-[var(--primary-purple)] transition-colors">PRÓXIMO</span>
                         <span className="material-symbols-outlined !text-xl group-hover:translate-x-1 transition-transform">east</span>
                     </button>
                 </footer>
