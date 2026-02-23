@@ -217,8 +217,8 @@ export const IntroBook: React.FC = () => {
                     </div>
 
                     <button
-                        onClick={() => setPage(page + 1)}
-                        className="flex items-center gap-3 px-6 py-3 rounded-full bg-quaresma-primary/5 hover:bg-quaresma-primary/10 text-quaresma-accent transition-all active:scale-95 group"
+                        onClick={() => page < slides.length - 1 && setPage(page + 1)}
+                        className={`flex items-center gap-3 px-6 py-3 rounded-full bg-quaresma-primary/5 hover:bg-quaresma-primary/10 text-quaresma-accent transition-all active:scale-95 group touch-manipulation ${page === slides.length - 1 ? 'opacity-0 pointer-events-none' : ''}`}
                     >
                         <span className="font-cinzel text-[10px] tracking-[0.2em] font-bold group-hover:text-quaresma-primary transition-colors">PRÓXIMO</span>
                         <span className="material-symbols-outlined !text-xl group-hover:translate-x-1 transition-transform">east</span>
